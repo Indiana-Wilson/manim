@@ -2855,9 +2855,11 @@ class CurvesAsSubmobjects(VGroup):
 
     def _throw_error_if_no_submobjects(self):
         if len(self.submobjects) == 0:
+            caller_class_name = type(self).__name__
             caller_name = sys._getframe(1).f_code.co_name
+
             raise Exception(
-                f"Cannot call CurvesAsSubmobjects. {caller_name} for a CurvesAsSubmobject with no submobjects"
+                f"Cannot call {caller_class_name}. {caller_name} for a {caller_class_name} with no submobjects"
             )
 
     def _get_submobjects_with_points(self):
